@@ -1,4 +1,4 @@
-# 📒 Address Book Web App
+# 📒 Contact Management
 
 A simple and intuitive Address Book web application built using HTML, CSS, and JavaScript. This project allows users to add, edit, and delete contact information directly from the browser.
 
