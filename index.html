@@ -1,65 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Management</title>
-  </head>
-  <body>
-    <header>
-      <h1>Contact Management</h1>
-      <ul>
-        <li><a href="/">Dashboard</a></li>
-      </ul>
-    </header>
+<header>
+  <h1>Contact Management</h1>
+  <ul>
+    <li><a href="/">Dashboard</a></li>
+  </ul>
+</header>
 
-    <hr />
+<hr />
 
-    <main>
-      <form id="search-contacts" method="get">
-        <input
-          id="search-input"
-          type="text"
-          name="q"
-          placeholder="Enter keyword..."
-        />
-        <button type="submit">Search</button>
-      </form>
-      <form id="add-contact" method="get" class="form-example">
-        <div class="form-example">
-          <label for="name">Enter your name: </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Dimas kanjeng"
-            required
-          />
-        </div>
-        <div class="form-example">
-          <label for="email">Enter your email: </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="pwz@gmail.com"
-            required
-          />
-        </div>
-        <div class="form-example">
-          <label for="telephone">Enter your telephone: </label>
-          <input
-            type="tel"
-            name="telephone"
-            id="telephone"
-            placeholder="+77217721"
-            required
-          />
-        </div>
-        <div class="btn-add-contact">
-          <button>Add Contact</button>
-        </div>
-      </form>
-    </main>
-  </body>
-</html>
+<main>
+  <form id="search-contacts" method="get">
+    <input
+      id="search-input"
+      type="text"
+      name="q"
+      placeholder="Enter keyword..."
+    />
+    <button type="submit">Search</button>
+  </form>
+  <form id="add-contact" method="get" class="form-example">
+    <div class="form-example">
+      <label for="name">Enter your name: </label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Dimas kanjeng"
+        required
+      />
+    </div>
+    <div class="form-example">
+      <label for="email">Enter your email: </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="pwz@gmail.com"
+        required
+      />
+    </div>
+    <div class="form-example">
+      <label for="telephone">Enter your telephone: </label>
+      <input
+        type="tel"
+        name="telephone"
+        id="telephone"
+        placeholder="+77217721"
+        required
+      />
+    </div>
+    <div class="btn-add-contact">
+      <button>Add Contact</button>
+    </div>
+  </form>
+</main>

@@ -1,0 +1,87 @@
+// Inisialisasi array kosong untuk menyimpan daftar kontak
+let contacts = []
+
+// Fungsi untuk menambahkan kontak baru
+function addContact(name, email, phone) {
+  let contact = {
+    name: name,
+    email: email,
+    phone: phone
+  }
+  contacts.push(contact)
+  console.log("Kontak berhasil ditambahkan.")
+}
+
+// Fungsi untuk menampilkan semua kontak
+function showAllContacts() {
+  if (contacts.length === 0) {
+    console.log("Belum ada kontak.")
+  } else {
+    contacts.forEach((contact, index) => {
+      console.log(`No: ${index + 1}`)
+      console.log(`Nama: ${contact.name}`)
+      console.log(`Email: ${contact.email}`)
+      console.log(`Telepon: ${contact.phone}`)
+      console.log("----------------------------")
+    })
+  }
+}
+
+// Fungsi untuk mencari kontak berdasarkan nama
+function searchContact(keyword) {
+  let result = contacts.filter(contact => contact.name.includes(keyword))
+  if (result.length === 0) {
+    console.log("Kontak tidak ditemukan.")
+  } else {
+    result.forEach(contact => {
+      console.log(`Nama: ${contact.name}`)
+      console.log(`Email: ${contact.email}`)
+      console.log(`Telepon: ${contact.phone}`)
+    })
+  }
+}
+
+// Fungsi untuk menghapus kontak berdasarkan nama
+function deleteContact(name) {
+  let index = contacts.findIndex(contact => contact.name === name)
+  if (index !== -1) {
+    contacts.splice(index, 1)
+    console.log("Kontak berhasil dihapus.")
+  } else {
+    console.log("Kontak tidak ditemukan.")
+  }
+}
+
+// Menu interaktif
+function showMenu() {
+  while (true) {
+    console.log("=== Contact Management ===")
+    console.log("1. Tambah Kontak")
+    console.log("2. Lihat Semua Kontak")
+    console.log("3. Cari Kontak")
+    console.log("4. Hapus Kontak")
+    console.log("5. Keluar")
+
+    let input = prompt("Pilih menu (1-5):")
+
+    if (input === "1") {
+      let name = prompt("Masukkan nama:")
+      let email = prompt("Masukkan email:")
+      let phone = prompt("Masukkan telepon:")
+      addContact(name, email, phone)
+    } else if (input === "2") {
+      showAllContacts()
+    } else if (input === "3") {
+      let keyword = prompt("Masukkan nama yang dicari:")
+      searchContact(keyword)
+    } else if (input === "4") {
+      let name = prompt("Masukkan nama kontak yang akan dihapus:")
+      deleteContact(name)
+    } else if (input === "5") {
+      console.log("Terima kasih.")
+      break
+    } else {
+      console.log("Pilihan tidak valid.")
+    }
+  }
+}

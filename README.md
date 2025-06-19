@@ -17,5 +17,5 @@ A simple and intuitive Address Book web application built using HTML, CSS, and J
 ## 🛠️ Tech Stack
 
 - **HTML5** – Markup structure
-- **CSS3** – Styling and layout
+- **TailwindCss** – Styling and layout
 - **JavaScript (Vanilla)** – Dynamic interaction and logic
