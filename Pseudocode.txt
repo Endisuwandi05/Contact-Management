@@ -1,87 +1,55 @@
-// Inisialisasi array kosong untuk menyimpan daftar kontak
-let contacts = []
+START
 
-// Fungsi untuk menambahkan kontak baru
-function addContact(name, email, phone) {
-  let contact = {
-    name: name,
-    email: email,
-    phone: phone
-  }
-  contacts.push(contact)
-  console.log("Kontak berhasil ditambahkan.")
-}
+1.## Create an empty list named contacts
 
-// Fungsi untuk menampilkan semua kontak
-function showAllContacts() {
-  if (contacts.length === 0) {
-    console.log("Belum ada kontak.")
-  } else {
-    contacts.forEach((contact, index) => {
-      console.log(`No: ${index + 1}`)
-      console.log(`Nama: ${contact.name}`)
-      console.log(`Email: ${contact.email}`)
-      console.log(`Telepon: ${contact.phone}`)
-      console.log("----------------------------")
-    })
-  }
-}
+2. Create a function addContact:
+    - Ask for name input
+    - Ask for email input
+    - Ask for phone number input
+    - Create contact data from the input  <---- dari user
+    - Add the contact to the contacts list
+    - Display "Contact added successfully"
 
-// Fungsi untuk mencari kontak berdasarkan nama
-function searchContact(keyword) {
-  let result = contacts.filter(contact => contact.name.includes(keyword))
-  if (result.length === 0) {
-    console.log("Kontak tidak ditemukan.")
-  } else {
-    result.forEach(contact => {
-      console.log(`Nama: ${contact.name}`)
-      console.log(`Email: ${contact.email}`)
-      console.log(`Telepon: ${contact.phone}`)
-    })
-  }
-}
+3. Create a function showAllContacts:
+    - If contacts is empty:     
+         - Display "No contacts yet"
+    - If not empty:
+         - For each contact:
+              - Display serial number
+              - Display name, email, and phone number
+              - Display a separator line
 
-// Fungsi untuk menghapus kontak berdasarkan nama
-function deleteContact(name) {
-  let index = contacts.findIndex(contact => contact.name === name)
-  if (index !== -1) {
-    contacts.splice(index, 1)
-    console.log("Kontak berhasil dihapus.")
-  } else {
-    console.log("Kontak tidak ditemukan.")
-  }
-}
+4. Create a function searchContact:
+    - Ask for name keyword input
+    - Search for contacts whose name contains the keyword
+    - If no match is found:
+         - Display "Contact not found"
+    - If found:
+         - Display name, email, and phone number from the search result
 
-// Menu interaktif
-function showMenu() {
-  while (true) {
-    console.log("=== Contact Management ===")
-    console.log("1. Tambah Kontak")
-    console.log("2. Lihat Semua Kontak")
-    console.log("3. Cari Kontak")
-    console.log("4. Hapus Kontak")
-    console.log("5. Keluar")
+5. Create a function deleteContact:
+    - Ask for the name of the contact to delete
+    - Search for a contact with that name
+    - If found:
+         - Remove from the list
+         - Display "Contact deleted successfully"
+    - If not found:
+         - Display "Contact not found"
 
-    let input = prompt("Pilih menu (1-5):")
+6. Create the main menu (in a loop):
+    - Display menu options:
+         1. Add Contact
+         2. View All Contacts
+         3. Search Contact
+         4. Delete Contact
+         5. Exit
+    - Ask the user to choose a menu option
+    - Run the function according to the choice:
+         - 1 → addContact
+         - 2 → showAllContacts
+         - 3 → searchContact
+         - 4 → deleteContact
+         - 5 → display "Thank you", then exit the program
+         - otherwise → display "Invalid choice"
 
-    if (input === "1") {
-      let name = prompt("Masukkan nama:")
-      let email = prompt("Masukkan email:")
-      let phone = prompt("Masukkan telepon:")
-      addContact(name, email, phone)
-    } else if (input === "2") {
-      showAllContacts()
-    } else if (input === "3") {
-      let keyword = prompt("Masukkan nama yang dicari:")
-      searchContact(keyword)
-    } else if (input === "4") {
-      let name = prompt("Masukkan nama kontak yang akan dihapus:")
-      deleteContact(name)
-    } else if (input === "5") {
-      console.log("Terima kasih.")
-      break
-    } else {
-      console.log("Pilihan tidak valid.")
-    }
-  }
-}
+END
