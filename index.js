@@ -24,10 +24,8 @@ function showAllContacts() {
     Name: ${contact.name}
     Email: ${contact.email}
     Phone: ${contact.phone}
-    `
-      );
-      console.log(
-        "------------------------------------------------------------"
+    
+    "-------------------------------------------------------------"`
       );
     });
   }
