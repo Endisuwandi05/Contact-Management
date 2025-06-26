@@ -1,55 +1,150 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact-Management</title>
+  <script src="storage.js"></script>
+  <script src="main.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Contact Management</h1>
+    <ul>
+      <li><a href="/">Dashboard</a></li>
+    </ul>
+  </header>
+
+  <hr />
+
+  <main class="">
+    <form id="search-contacts" method="get">
+
+      <input
+        id="search-input"
+        type="text"
+        name="q"
+        placeholder="Enter keyword..."
+      />
+      <label for="name">Enter your name: </label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Dimas kanjeng"
+        required
+      />
+    </div>
+    <div class="form-example">
+      <label for="email">Enter your email: </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="pwz@gmail.com"
+        required
+      />
+    </div>
+    <div class="form-example">
+      <label for="telephone">Enter your telephone: </label>
+      <input
+        type="tel"
+        name="telephone"
+        id="telephone"
+        placeholder="+77217721"
+        required
+      />
+    </div>
+    <button type="submit">Submit</button>
+</body>
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact Management</title>
-<script src="index.js"></script>
+    <title>Contact Book</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      input,
+      button {
+        margin: 5px 0;
+        padding: 8px;
+        width: 100%;
+      }
+      .contact {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px 0;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <h1>Contact Management</h1>
-      <ul>
-        <li><a href="/">Dashboard</a></li>
-      </ul>
-    </header>
+    <h2>Tambah Kontak</h2>
+    <input type="text" id="name" placeholder="Nama" />
+    <input type="email" id="email" placeholder="Email" />
+    <input type="tel" id="phone" placeholder="Nomor Telepon" />
+    <input type="text" id="address" placeholder="Alamat" />
+    <button onclick="addContact()">Simpan Kontak</button>
 
-    <hr />
+    <h2>Daftar Kontak</h2>
+    <div id="contactList"></div>
 
-    <main>
-      <form id="search-contacts" method="get">
+    <script>
+      let contactBook = JSON.parse(localStorage.getItem("contactBook")) || [];
 
-        <input
-          id="search-input"
-          type="text"
-          name="q"
-          placeholder="Enter keyword..."
-        />
-        <label for="name">Enter your name: </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Dimas kanjeng"
-          required
-        />
-      </div>
-      <div class="form-example">
-        <label for="email">Enter your email: </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="pwz@gmail.com"
-          required
-        />
-      </div>
-      <div class="form-example">
-        <label for="telephone">Enter your telephone: </label>
-        <input
-          type="tel"
-          name="telephone"
-          id="telephone"
-          placeholder="+77217721"
-          required
-        />
+      function saveToStorage() {
+        localStorage.setItem("contactBook", JSON.stringify(contactBook));
+      }
+
+      function displayContacts() {
+        const list = document.getElementById("contactList");
+        list.innerHTML = "";
+
+        if (contactBook.length === 0) {
+          list.innerHTML = "<p>Kontak belum ada.</p>";
+          return;
+        }
+
+        contactBook.forEach((c, i) => {
+          list.innerHTML += `
+          <div class="contact">
+            <strong>${i + 1}. ${c.name}</strong><br>
+            Email: ${c.email}<br>
+            Telepon: ${c.phone}<br>
+            Alamat: ${c.address}
+          </div>`;
+        });
+      }
+
+      function addContact() {
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const address = document.getElementById("address").value.trim();
+
+        if (!name || !email || !phone || !address) {
+          alert("Semua field harus diisi.");
+          return;
+        }
+
+        const newContact = { name, email, phone, address };
+        contactBook.push(newContact);
+        saveToStorage();
+        displayContacts();
+
+        // Kosongkan form
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("address").value = "";
+      }
+
+      // Tampilkan kontak saat halaman dibuka
+      displayContacts();
+    </script>
+  </body>
+</html>
