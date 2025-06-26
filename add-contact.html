@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="storage.js"></script>
+  </head>
+  <body
+    class="bg-gray-100 text-gray-800 font-sans flex items-center justify-center min-h-screen"
+  >
+    <div class="bg-white shadow rounded p-8 w-full max-w-md">
+      <h2 class="text-2xl font-bold mb-6 text-center">Add New Contact</h2>
+      <form id="contact-form" class="space-y-4">
+        <input
+          type="text"
+          id="name"
+          placeholder="Full Name"
+          required
+          class="w-full p-2 border rounded"
+        />
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          required
+          class="w-full p-2 border rounded"
+        />
+        <input
+          type="tel"
+          id="phone"
+          placeholder="Phone"
+          required
+          class="w-full p-2 border rounded"
+        />
+        <input
+          type="text"
+          id="location"
+          placeholder="Location (e.g. California, US)"
+          class="w-full p-2 border rounded"
+        />
+        <button
+          type="submit"
+          class="bg-sky-500 text-white px-4 py-2 rounded w-full hover:bg-sky-700"
+        >
+          Save Contact
+        </button>
+      </form>
+      <div class="mt-4 text-center">
+        <a href="index.html" class="text-blue-600 text-sm"
+          >← Back to Contacts</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

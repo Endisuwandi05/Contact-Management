@@ -3,53 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact Management</title>
-<script src="index.js"></script>
+    <title>Contact Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="Main.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <header>
-      <h1>Contact Management</h1>
-      <ul>
-        <li><a href="/">Dashboard</a></li>
-      </ul>
-    </header>
 
-    <hr />
+  <body class="bg-gray-100 text-gray-800 font-sans">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-white shadow p-4 space-y-4">
+        <a href="add-contact.html">
+          <button
+            class="w-full bg-gray-100 text-gray py-2 rounded hover:bg-[#d9d9d9] -700"
+          >
+            + Create Contact
+          </button>
+        </a>
 
-    <main>
-      <form id="search-contacts" method="get">
+        <nav class="space-y-2 text-gray-700">
+          <button
+            class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9] -700"
+          >
+            <span class="material-icons mr-2">person</span> Contact
+            <span class="ml-auto text-sm text-gray-500"></span>
+          </button>
+          <button
+            class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9] -700"
+          >
+            <span class="material-icons mr-2">star</span> Often
+          </button>
+          <button
+            class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9]"
+          >
+            <span class="material-icons mr-2">delete</span> Trash
+          </button>
+          <button
+            class="flex items-center w-full p-2 rounded bg-gray-100 hover:bg-[#d9d9d9]"
+          >
+            <span class="material-icons mr-2">label</span> Label
+            <span class="ml-auto">+</span>
+          </button>
+        </nav>
+      </aside>
 
-        <input
-          id="search-input"
-          type="text"
-          name="q"
-          placeholder="Enter keyword..."
-        />
-        <label for="name">Enter your name: </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Dimas kanjeng"
-          required
-        />
-      </div>
-      <div class="form-example">
-        <label for="email">Enter your email: </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="pwz@gmail.com"
-          required
-        />
-      </div>
-      <div class="form-example">
-        <label for="telephone">Enter your telephone: </label>
-        <input
-          type="tel"
-          name="telephone"
-          id="telephone"
-          placeholder="+77217721"
-          required
-        />
+      <!-- Main Content -->
+      <main class="flex-1 p-8">
+        <div class="text-center mb-8">
+          <h1
+            class="text-3xl font-bold flex justify-center items-center gap-2 mb-4"
+          >
+            <span class="material-icons text-blue-600 text-4xl"
+              >contact_phone</span
+            >
+            Contact Management
+          </h1>
+          <div class="flex justify-center">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search"
+              class="border border-gray-300 p-2 rounded w-full max-w-md"
+            />
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
