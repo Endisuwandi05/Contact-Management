@@ -3,55 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Contact</title>
+    <title>Contact Management</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="storage.js"></script>
+    <script src="Main.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
-  <body
-    class="bg-gray-100 text-gray-800 font-sans flex items-center justify-center min-h-screen"
-  >
-    <div class="bg-white shadow rounded p-8 w-full max-w-md">
-      <h2 class="text-2xl font-bold mb-6 text-center">Add New Contact</h2>
-      <form id="contact-form" class="space-y-4">
-        <input
-          type="text"
-          id="name"
-          placeholder="Full Name"
-          required
-          class="w-full p-2 border rounded"
-        />
-        <input
-          type="email"
-          id="email"
-          placeholder="Email"
-          required
-          class="w-full p-2 border rounded"
-        />
-        <input
-          type="tel"
-          id="phone"
-          placeholder="Phone"
-          required
-          class="w-full p-2 border rounded"
-        />
-        <input
-          type="text"
-          id="location"
-          placeholder="Location (e.g. California, US)"
-          class="w-full p-2 border rounded"
-        />
-        <button
-          type="submit"
-          class="bg-sky-500 text-white px-4 py-2 rounded w-full hover:bg-sky-700"
-        >
-          Save Contact
-        </button>
-      </form>
-      <div class="mt-4 text-center">
-        <a href="index.html" class="text-blue-600 text-sm"
-          >← Back to Contacts</a
-        >
-      </div>
+
+  <body class="bg-gray-100 text-gray-800 font-sans">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-white shadow p-4 space-y-4">
+        <a href="add-contact.html">
+          <button
+            class="w-full bg-gray-100 text-gray py-2 rounded hover:bg-[#d9d9d9] -700"
+          >
+            + Create Contact
+          </button>
+        </a>
+
+        <nav class="space-y-2 text-gray-700">
+          <button
+            class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9] -700"
+          >
+            <span class="material-icons mr-2">person</span> Contact
+            <span class="ml-auto text-sm text-gray-500"></span>
+          </button>
+          <button
+            class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9] -700"
+          >
+            <span class="material-icons mr-2">star</span> Often
+          </button>
+          <button
+            class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9]"
+          >
+            <span class="material-icons mr-2">delete</span> Trash
+          </button>
+          <button
+            class="flex items-center w-full p-2 rounded bg-gray-100 hover:bg-[#d9d9d9]"
+          >
+            <span class="material-icons mr-2">label</span> Label
+            <span class="ml-auto">+</span>
+          </button>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-8">
+        <div class="text-center mb-8">
+          <h1
+            class="text-3xl font-bold flex justify-center items-center gap-2 mb-4"
+          >
+            <span class="material-icons text-blue-600 text-4xl"
+              >contact_phone</span
+            >
+            Contact Management
+          </h1>
+          <div class="flex justify-center">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search"
+              class="border border-gray-300 p-2 rounded w-full max-w-md"
+            />
+          </div>
+        </div>
+      </main>
     </div>
   </body>
 </html>
