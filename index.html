@@ -5,32 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Management</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="main.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
 
   <body class="bg-gray-100 text-gray-800 font-sans">
     <div class="flex min-h-screen">
       <!-- Sidebar -->
       <aside class="w-64 bg-white shadow p-4 space-y-4">
-        <a href="add-contact.html"
-          class="block w-full bg-gray-100 text-gray-700 py-2 rounded hover:bg-[#d9d9d9] text-center"
-        >
-          + Create Contact
-
+        <a href="add-contact.html">
+          <button
+            class="w-full bg-gray-100 text-gray-700 py-2 rounded hover:bg-[#d9d9d9]"
+          >
+            + Create Contact
+          </button>
         </a>
 
         <nav class="space-y-2 text-gray-700">
-          <button class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9] -700">
+          <button
+            class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9] -700"
+          >
             <span class="material-icons mr-2">person</span> Contact
             <span class="ml-auto text-sm text-gray-500"></span>
           </button>
-          <button class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9] -700">
+          <button
+            class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9] -700"
+          >
             <span class="material-icons mr-2">star</span> Often
           </button>
-          <button class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9]">
+          <button
+            class="bg-gray-100 flex items-center w-full p-2 rounded hover:bg-[#d9d9d9]"
+          >
             <span class="material-icons mr-2">delete</span> Trash
           </button>
-          <button class="flex items-center w-full p-2 rounded bg-gray-100 hover:bg-[#d9d9d9]">
+          <button
+            class="flex items-center w-full p-2 rounded bg-gray-100 hover:bg-[#d9d9d9]"
+          >
             <span class="material-icons mr-2">label</span> Label
             <span class="ml-auto">+</span>
           </button>
@@ -40,8 +53,12 @@
       <!-- Main Content -->
       <main class="flex-1 p-8">
         <div class="text-center mb-8">
-          <h1 class="text-3xl font-bold flex justify-center items-center gap-2 mb-4">
-            <span class="material-icons text-blue-600 text-4xl">contact_phone</span>
+          <h1
+            class="text-3xl font-bold flex justify-center items-center gap-2 mb-4"
+          >
+            <span class="material-icons text-blue-600 text-4xl"
+              >contact_phone</span
+            >
             Contact Management
           </h1>
           <div class="flex justify-center">
@@ -55,7 +72,5 @@
         </div>
       </main>
     </div>
-
-    <script src="main.js"></script>
   </body>
 </html>

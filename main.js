@@ -42,7 +42,9 @@ Address: ${contact.address}`
 
 // Fitur mencari kontak berdasarkan  nama
 function searchContact(name) {
-  let foundContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(name.toLowerCase()));
+  let foundContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(name.toLowerCase())
+  );
 
   if (foundContacts.length === 0) {
     console.log("No contacts found with that name.");
