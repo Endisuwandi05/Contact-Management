@@ -1,55 +1,16 @@
+//Fitur menambahkan kontak
+
 START
-
-1.## Create an empty list named contacts
-
-2. Create a function addContact:
-    - Ask for name input
-    - Ask for email input
-    - Ask for phone number input
-    - Create contact data from the input  <---- dari user
-    - Add the contact to the contacts list
-    - Display "Contact added successfully"
-
-3. Create a function showAllContacts:
-    - If contacts is empty:     
-         - Display "No contacts yet"
-    - If not empty:
-         - For each contact:
-              - Display serial number
-              - Display name, email, and phone number
-              - Display a separator line
-
-4. Create a function searchContact:
-    - Ask for name keyword input
-    - Search for contacts whose name contains the keyword
-    - If no match is found:
-         - Display "Contact not found"
-    - If found:
-         - Display name, email, and phone number from the search result
-
-5. Create a function deleteContact:
-    - Ask for the name of the contact to delete
-    - Search for a contact with that name
-    - If found:
-         - Remove from the list
-         - Display "Contact deleted successfully"
-    - If not found:
-         - Display "Contact not found"
-
-6. Create the main menu (in a loop):
-    - Display menu options:
-         1. Add Contact
-         2. View All Contacts
-         3. Search Contact
-         4. Delete Contact
-         5. Exit
-    - Ask the user to choose a menu option
-    - Run the function according to the choice:
-         - 1 → addContact
-         - 2 → showAllContacts
-         - 3 → searchContact
-         - 4 → deleteContact
-         - 5 → display "Thank you", then exit the program
-         - otherwise → display "Invalid choice"
-
+Tampilkan form input data kontak
+User mengisi data: Nama, Nomor HP, Email
+Klik tombol "Simpan"
+Periksa apakah semua field terisi
+    Jika tidak lengkap:
+        Tampilkan pesan error
+    Jika lengkap:
+        Simpan data ke database
+        Tampilkan pesan "Data berhasil disimpan"
 END
+
+// 
+  

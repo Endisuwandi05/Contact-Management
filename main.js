@@ -2,56 +2,56 @@
 // Kontak terdiri dari nama, email, dan nomor telepon
 let contacts = [
   {
-    id: Date.now(),
+    id: 1,
     name: "Endi Suwandi",
     email: "endisuwandi@gmail.com",
     phone: "+6281234567890",
     address: "Jl. Contoh Alamat No. 1, Kota, Indonesia",
   },
   {
-    id: Date.now(),
+    id: 2,
     name: "Rizky Pratama",
     email: "rizky.pratama@example.com",
     phone: "+6281122334455",
     address: "Jl. Kenanga No. 10, Jakarta, Indonesia",
   },
   {
-    id: Date.now(),
+    id: 3,
     name: "Siti Nurhaliza",
     email: "siti.nurhaliza@example.com",
     phone: "+6285566778899",
     address: "Jl. Mawar No. 5, Surabaya, Indonesia",
   },
   {
-    id: Date.now(),
+    id: 4,
     name: "Ahmad Fauzi",
     email: "ahmad.fauzi@example.com",
     phone: "+6282233445566",
     address: "Jl. Anggrek No. 12, Yogyakarta, Indonesia",
   },
   {
-    id: Date.now(),
+    id: 5,
     name: "Lestari Putri",
     email: "lestari.putri@example.com",
     phone: "+6287788990011",
     address: "Jl. Dahlia No. 8, Semarang, Indonesia",
   },
   {
-    id: Date.now(),
+    id: 6,
     name: "Bagas Saputra",
     email: "bagas.saputra@example.com",
     phone: "+6283344556677",
     address: "Jl. Flamboyan No. 3, Medan, Indonesia",
   },
   {
-    id: Date.now(),
+    id: 7,
     name: "Siti Badriah",
     email: "putri.ayu@example.com",
     phone: "+6289900112233",
     address: "Jl. Bougenville No. 15, Bali, Indonesia",
   },
   {
-    id: Date.now(),
+    id: 8,
     name: "Dimas Prabowo",
     email: "dimas.prabowo@example.com",
     phone: "+6281234567890",
@@ -61,15 +61,21 @@ let contacts = [
 
 // Fitur menambahkan kontak
 function addContact(name, email, phone, address) {
+  let newId;
+  if (contacts.length === 0) {
+    newId = 1;
+  } else {
+    newId = contacts.at(-1).id + 1;
+  }
   let contact = {
-    id: Date.now(),
+    id: newId,
     name: name,
     email: email,
     phone: phone,
     address: address,
   };
   contacts.push(contact);
-  console.log("Contact added successfully:", contact);
+  console.log(contact, "Contact added successfully:");
 }
 
 // Fitur menampilkan semua kontak
@@ -119,5 +125,6 @@ function DeleteContact(id) {
 }
 
 showAllContacts();
-addContact();
+addContact("Dimas kanjeng", "Dimas@gmail.com", "+21 092326", "Jakarta ");
+showAllContacts();
 DeleteContact();
