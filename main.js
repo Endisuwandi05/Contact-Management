@@ -1,130 +1,196 @@
-//Array untuk menyimpan kontak
-// Kontak terdiri dari nama, email, dan nomor telepon
-let contacts = [
-  {
-    id: 1,
-    name: "Endi Suwandi",
-    email: "endisuwandi@gmail.com",
-    phone: "+6281234567890",
-    address: "Jl. Contoh Alamat No. 1, Kota, Indonesia",
-  },
-  {
-    id: 2,
-    name: "Rizky Pratama",
-    email: "rizky.pratama@example.com",
-    phone: "+6281122334455",
-    address: "Jl. Kenanga No. 10, Jakarta, Indonesia",
-  },
-  {
-    id: 3,
-    name: "Siti Nurhaliza",
-    email: "siti.nurhaliza@example.com",
-    phone: "+6285566778899",
-    address: "Jl. Mawar No. 5, Surabaya, Indonesia",
-  },
-  {
-    id: 4,
-    name: "Ahmad Fauzi",
-    email: "ahmad.fauzi@example.com",
-    phone: "+6282233445566",
-    address: "Jl. Anggrek No. 12, Yogyakarta, Indonesia",
-  },
-  {
-    id: 5,
-    name: "Lestari Putri",
-    email: "lestari.putri@example.com",
-    phone: "+6287788990011",
-    address: "Jl. Dahlia No. 8, Semarang, Indonesia",
-  },
-  {
-    id: 6,
-    name: "Bagas Saputra",
-    email: "bagas.saputra@example.com",
-    phone: "+6283344556677",
-    address: "Jl. Flamboyan No. 3, Medan, Indonesia",
-  },
-  {
-    id: 7,
-    name: "Siti Badriah",
-    email: "putri.ayu@example.com",
-    phone: "+6289900112233",
-    address: "Jl. Bougenville No. 15, Bali, Indonesia",
-  },
-  {
-    id: 8,
-    name: "Dimas Prabowo",
-    email: "dimas.prabowo@example.com",
-    phone: "+6281234567890",
-    address: "Jl. Melati No. 20, Bandung, Indonesia",
-  },
-];
+// === Utility untuk localStorage ===
+function getContacts() {
+  return JSON.parse(localStorage.getItem("contacts")) || [];
+}
 
-// Fitur menambahkan kontak
-function addContact(name, email, phone, address) {
-  let newId;
-  if (contacts.length === 0) {
-    newId = 1;
-  } else {
-    newId = contacts.at(-1).id + 1;
-  }
-  let contact = {
-    id: newId,
-    name: name,
-    email: email,
-    phone: phone,
-    address: address,
-  };
+function saveContacts(contacts) {
+  localStorage.setItem("contacts", JSON.stringify(contacts));
+}
+
+function getTrashContacts() {
+  return JSON.parse(localStorage.getItem("trashContacts")) || [];
+}
+
+function saveTrashContacts(trashContacts) {
+  localStorage.setItem("trashContacts", JSON.stringify(trashContacts));
+}
+
+// === Contact CRUD ===
+function addContact(contact) {
+  const contacts = getContacts();
   contacts.push(contact);
-  console.log(contact, "Contact added successfully:");
+  saveContacts(contacts);
 }
 
-// Fitur menampilkan semua kontak
-function showAllContacts() {
-  if (contacts.length === 0) {
-    console.log("No contacts available.");
-  } else {
-    contacts.forEach((contact) => {
-      console.log(
-        `
-// ID: ${contact.id}:
-Name: ${contact.name}
-Email: ${contact.email}
-Phone: ${contact.phone}
-Address: ${contact.address}`
-      );
+function deleteContact(index) {
+  const contacts = getContacts();
+  const removed = contacts.splice(index, 1)[0];
+
+  const trashContacts = getTrashContacts();
+  trashContacts.push(removed);
+  saveTrashContacts(trashContacts);
+
+  saveContacts(contacts);
+  displayContacts(contacts);
+}
+
+// === Display List ===
+function displayContacts(contacts) {
+  const main = document.querySelector("main");
+  let contactList = document.createElement("div");
+  contactList.className = "grid gap-4 max-w-3xl mx-auto";
+
+  contacts.forEach((contact, index) => {
+    let card = document.createElement("div");
+    card.className =
+      "bg-white shadow p-4 rounded flex justify-between items-center";
+
+    let info = document.createElement("div");
+    info.innerHTML = `
+            <p class="font-semibold">${contact.name}</p>
+            <p class="text-sm text-gray-600">${contact.email}</p>
+            <p class="text-sm text-gray-600">${contact.phone}</p>
+            <p class="text-sm text-gray-600">${contact.location}</p>
+        `;
+
+    let btnGroup = document.createElement("div");
+    btnGroup.className = "flex gap-2";
+
+    let editBtn = document.createElement("button");
+    editBtn.className = "text-blue-500 hover:text-blue-700";
+    editBtn.innerHTML = '<span class="material-icons">edit</span>';
+    editBtn.addEventListener("click", () => editContact(index));
+
+    let delBtn = document.createElement("button");
+    delBtn.className = "text-red-500 hover:text-red-700";
+    delBtn.innerHTML = '<span class="material-icons">delete</span>';
+    delBtn.addEventListener("click", () => {
+      if (confirm("Pindahkan kontak ini ke Trash?")) {
+        deleteContact(index);
+      }
     });
-  }
+
+    btnGroup.appendChild(editBtn);
+    btnGroup.appendChild(delBtn);
+    card.appendChild(info);
+    card.appendChild(btnGroup);
+    contactList.appendChild(card);
+  });
+
+  const oldList = document.getElementById("contact-list");
+  if (oldList) oldList.remove();
+
+  contactList.id = "contact-list";
+  main.appendChild(contactList);
 }
 
-// Fitur mencari kontak berdasarkan  nama
-function searchContact(name) {
-  let foundContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(name.toLowerCase())
-  );
+// === Edit Contact ===
+function editContact(index) {
+  const contacts = getContacts();
+  const contact = contacts[index];
 
-  if (foundContacts.length === 0) {
-    console.log("No contacts found with that name.");
-  } else {
-    foundContacts.forEach((contact) => {
-      console.log(
-        `
-ID: ${contact.id}:
-Name: ${contact.name}
-Email: ${contact.email}
-Phone: ${contact.phone}
-Address: ${contact.address}`
-      );
+  localStorage.setItem("editIndex", index);
+  localStorage.setItem("editContact", JSON.stringify(contact));
+  window.location.href = "add-contact.html";
+}
+
+// === Add-Contact Page ===
+if (document.getElementById("contact-form")) {
+  const editContactData = localStorage.getItem("editContact");
+  const editIndex = localStorage.getItem("editIndex");
+
+  if (editContactData && editIndex !== null) {
+    const contact = JSON.parse(editContactData);
+    document.getElementById("name").value = contact.name;
+    document.getElementById("email").value = contact.email;
+    document.getElementById("phone").value = contact.phone;
+    document.getElementById("location").value = contact.location;
+  }
+
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const contact = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        location: document.getElementById("location").value,
+      };
+
+      if (editIndex !== null) {
+        const contacts = getContacts();
+        contacts[editIndex] = contact;
+        saveContacts(contacts);
+        localStorage.removeItem("editIndex");
+        localStorage.removeItem("editContact");
+        alert("Contact updated successfully!");
+      } else {
+        addContact(contact);
+        alert("Contact saved successfully!");
+      }
+
+      window.location.href = "index.html";
     });
-  }
 }
 
-//Fitur delete contact
-function DeleteContact(id) {
-  contacts = contacts.filter((contact) => contact.id !== id);
-  console.log("Contact deleted successfully.");
+// === Index Page ===
+if (document.getElementById("search-input")) {
+  const contacts = getContacts();
+  displayContacts(contacts);
+
+  document
+    .getElementById("search-input")
+    .addEventListener("input", function () {
+      const keyword = this.value.toLowerCase();
+      const filtered = contacts.filter(
+        (c) =>
+          c.name.toLowerCase().includes(keyword) ||
+          c.email.toLowerCase().includes(keyword) ||
+          c.phone.toLowerCase().includes(keyword) ||
+          c.location.toLowerCase().includes(keyword)
+      );
+      displayContacts(filtered);
+    });
 }
 
-showAllContacts();
-addContact("Dimas kanjeng", "Dimas@gmail.com", "+21 092326", "Jakarta ");
-showAllContacts();
-DeleteContact();
+// === Trash Page ===
+if (document.getElementById("trash-container")) {
+  const trashContacts = getTrashContacts();
+  displayTrashContacts(trashContacts);
+}
+
+function displayTrashContacts(trashContacts) {
+  const container = document.getElementById("trash-container");
+  container.innerHTML = "";
+
+  trashContacts.forEach((contact, index) => {
+    let card = document.createElement("div");
+    card.className =
+      "bg-white shadow p-4 rounded flex justify-between items-center";
+
+    let info = document.createElement("div");
+    info.innerHTML = `
+            <p class="font-semibold">${contact.name}</p>
+            <p class="text-sm text-gray-600">${contact.email}</p>
+            <p class="text-sm text-gray-600">${contact.phone}</p>
+            <p class="text-sm text-gray-600">${contact.location}</p>
+        `;
+
+    let delBtn = document.createElement("button");
+    delBtn.className = "text-red-500 hover:text-red-700";
+    delBtn.innerHTML = '<span class="material-icons">delete_forever</span>';
+    delBtn.addEventListener("click", () => {
+      if (confirm("Hapus kontak ini secara permanen?")) {
+        trashContacts.splice(index, 1);
+        saveTrashContacts(trashContacts);
+        displayTrashContacts(trashContacts);
+      }
+    });
+
+    card.appendChild(info);
+    card.appendChild(delBtn);
+    container.appendChild(card);
+  });
+}
