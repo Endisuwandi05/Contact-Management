@@ -4,38 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Management</title>
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="assets/img/phone-book-contacts-svgrepo-com.svg"
-    />
+    <link rel="icon" type="image/svg+xml" href="assets/img/phone-book-contacts-svgrepo-com.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   </head>
   <body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
     <div class="flex min-h-screen">
       <aside class="w-64 bg-white shadow p-4 space-y-4">
-        <button
-          onclick="navigate('#home')"
-          class="block w-full bg-gray-100 text-gray-700 py-2 rounded hover:bg-[#d9d9d9] text-center"
-        >
+        <a href="/" class="block w-full bg-gray-100 text-gray-700 py-2 rounded hover:bg-[#d9d9d9] text-center">
           🏠 Home
-        </button>
-        <button
-          onclick="navigate('#add')"
-          class="block w-full bg-gray-100 text-gray-700 py-2 rounded hover:bg-[#d9d9d9] text-center"
-        >
+        </a>
+        <a href="/#add" class="block w-full bg-gray-100 text-gray-700 py-2 rounded hover:bg-[#d9d9d9] text-center">
           ➕ Add Contact
-        </button>
-        <button
-          onclick="navigate('#trash')"
-          class="block w-full bg-gray-100 text-gray-700 py-2 rounded hover:bg-[#d9d9d9] text-center"
-        >
+        </a>
+        <a href="/#trash" class="block w-full bg-gray-100 text-gray-700 py-2 rounded hover:bg-[#d9d9d9] text-center">
           🗑️ Trash
-        </button>
+        </a>
       </aside>
       <main id="app" class="flex-1 p-8 overflow-y-auto"></main>
     </div>
