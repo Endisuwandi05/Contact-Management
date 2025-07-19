@@ -34,7 +34,10 @@ function saveTrashContacts(trashContacts) {
 function renderHome() {
   const app = document.getElementById("app");
   app.innerHTML = `
-    <h1 class="text-3xl font-bold mb-4">Contact Management</h1>
+ <h1 class="text-3xl font-bold mb-4 flex items-center gap-2">
+
+    <img src="/assets/img/phone-book-contacts-svgrepo-com.svg" alt="Logo" class="w-8 h-8" />
+    Contact Management</h1>
     <input type="text" id="search-input" placeholder="Search contacts..." class="border p-2 rounded w-full mb-4" />
     <div id="contact-list" class="grid gap-4"></div>
   `;
