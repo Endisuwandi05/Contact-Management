@@ -1,6 +1,6 @@
-# 📒 Contact Management SPA
+# 📒 Contact Management
 
-![Contact Management Logo](https://raw.githubusercontent.com/Endisuwandi05/assets/main/contact-logo.svg)
+![Contact Management Logo](https://raw.githubusercontent.com/Endisuwandi05/assets/img/phone-book-contacts-svgrepo-com.svg)
 
 A clean, intuitive **Contact Management SPA** built with **HTML, TailwindCSS, and Vanilla JavaScript**. Manage your contacts directly in the browser with a professional, responsive design.
 
