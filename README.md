@@ -1,17 +1,64 @@
-# 📒 Contact Management
+# 📒 Contact Management SPA
 
-A simple and intuitive Address Book web application built using HTML, CSS, and JavaScript. This project allows users to add, edit, and delete contact information directly from the browser.
+![Contact Management Logo](https://raw.githubusercontent.com/Endisuwandi05/assets/main/contact-logo.svg)
+
+A clean, intuitive **Contact Management SPA** built with **HTML, TailwindCSS, and Vanilla JavaScript**. Manage your contacts directly in the browser with a professional, responsive design.
+
+---
 
 ## 🚀 Features
 
-- Contact List: Display a list of contacts with their names and essential details.
-- Contact Details: Clicking on a contact should open a page displaying detailed information, including phone numbers, email addresses, and any additional notes.
-- Add New Contact: Provide a form or interface to add new contacts with fields for name, phone number, email, address, and notes.
-- Delete and Edit Contact: Allow users to delete and edit existing contact information.
-- Search Functionality: Implement a search bar to quickly find contacts by name or other relevant details.
+✅ **Contact List:** View all your contacts with essential details.  
+✅ **Contact Details:** Click to view complete contact information cleanly.  
+✅ **Add New Contact:** Easily add contacts with name, email, phone, and location.  
+✅ **Edit & Delete Contacts:** Modify or move contacts to Trash seamlessly.  
+✅ **Trash Management:** Restore or permanently delete contacts safely.  
+✅ **Search Functionality:** Quickly find contacts using the search bar.  
+✅ **Responsive Design:** Works beautifully on all screen sizes.  
+✅ **Dark Mode Ready:** (Optional feature to add for clean UI experience.)
+
+---
 
 ## 🛠️ Tech Stack
 
-- **HTML5** – Markup structure
-- **TailwindCss** – Styling and layout
-- **JavaScript (Vanilla)** – Dynamic interaction and logic
+- **HTML5** – Clean semantic structure.
+- **TailwindCSS** – For modern, responsive, utility-first styling.
+- **Vanilla JavaScript** – SPA routing and dynamic interactions.
+
+---
+
+## 📸 Screenshots
+
+> _Add relevant screenshots of the Contact List, Add Contact form, and Trash view here for better README presentation._
+
+---
+
+## ⚡ Installation
+
+```bash
+git clone https://github.com/Endisuwandi05/Contact-Management.git
+cd Contact-Management
+# Open index.html in your browser
+```
+
+---
+
+## 🤝 Contributing
+
+Pull requests and suggestions are welcome! For significant changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📄 License
+
+[MIT](LICENSE)
+
+---
+
+## ✨ Author
+
+- [Endi Suwandi](https://github.com/Endisuwandi05)
+
+---
+
+⚡ **Build your productivity with this Contact Management SPA, managing your connections efficiently and beautifully.**

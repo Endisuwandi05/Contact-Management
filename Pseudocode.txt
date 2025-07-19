@@ -1,16 +1,105 @@
-//Fitur menambahkan kontak
-
+📌 Pseudocode: Contact Management SPA
 START
-Tampilkan form input data kontak
-User mengisi data: Nama, Nomor HP, Email
-Klik tombol "Simpan"
-Periksa apakah semua field terisi
-    Jika tidak lengkap:
-        Tampilkan pesan error
-    Jika lengkap:
-        Simpan data ke database
-        Tampilkan pesan "Data berhasil disimpan"
-END
+🔹 Tampilkan halaman Home:
 
-// 
-  
+Tampilkan daftar kontak dari localStorage.
+
+Tampilkan search bar untuk pencarian kontak.
+
+Tampilkan tombol navigasi ke Add Contact dan Trash.
+
+🔹 User menggunakan Search:
+
+Saat user mengetik di search bar,
+
+Filter kontak berdasarkan nama, email, nomor HP, lokasi.
+
+🔹 Fitur Tambah Kontak:
+
+User klik tombol Add Contact.
+
+Tampilkan form input: Nama, Email, Nomor HP, Lokasi.
+
+User mengisi data lalu klik tombol Simpan.
+
+Validasi semua field:
+
+Jika ada yang kosong:
+
+Tampilkan pesan error.
+
+Jika semua terisi:
+
+Simpan data ke localStorage.
+
+Tampilkan pesan “Data berhasil disimpan”.
+
+Redirect ke Home.
+
+🔹 Fitur Detail Kontak:
+
+User klik pada salah satu kontak di Home.
+
+Tampilkan halaman detail kontak: Nama, Email, Nomor HP, Lokasi.
+
+Tampilkan tombol Edit dan Back.
+
+🔹 Fitur Edit Kontak:
+
+User klik tombol Edit pada halaman detail kontak atau dari daftar kontak.
+
+Tampilkan form dengan data terisi.
+
+User memperbarui data lalu klik Update Contact.
+
+Validasi data:
+
+Jika valid:
+
+Update data di localStorage.
+
+Tampilkan pesan “Contact updated successfully”.
+
+Redirect ke Home.
+
+🔹 Fitur Hapus Kontak:
+
+User klik tombol Delete pada daftar kontak.
+
+Kontak akan dipindahkan ke Trash (localStorage trashContacts).
+
+🔹 Fitur Trash:
+
+User klik navigasi ke Trash.
+
+Tampilkan daftar kontak yang terhapus.
+
+Pada setiap kontak di Trash:
+
+Tampilkan tombol Restore:
+
+Jika diklik:
+
+Pindahkan kontak kembali ke daftar kontak.
+
+Tampilkan pesan “Contact restored successfully”.
+
+Redirect ke Home.
+
+Tampilkan tombol Delete Forever:
+
+Jika diklik:
+
+Tampilkan konfirmasi: “Are you sure you want to permanently delete?”
+
+Jika user konfirmasi:
+
+Hapus kontak dari trashContacts permanen.
+
+Update tampilan Trash.
+
+🔹 Fitur Tambahan:
+
+Tambahkan logo pada header Home agar lebih profesional.
+
+END
