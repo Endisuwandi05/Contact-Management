@@ -6,6 +6,7 @@ window.addEventListener("load", router);
 
 function router() {
   const hash = location.hash || "#home";
+
   if (hash === "#home") renderHome();
   else if (hash === "#add") renderAddContact();
   else if (hash === "#trash") renderTrash();
@@ -21,18 +22,22 @@ function router() {
 function getContacts() {
   return JSON.parse(localStorage.getItem("contacts")) || [];
 }
+
 function saveContacts(contacts) {
   localStorage.setItem("contacts", JSON.stringify(contacts));
 }
+
 function getTrashContacts() {
   return JSON.parse(localStorage.getItem("trashContacts")) || [];
 }
+
 function saveTrashContacts(trashContacts) {
   localStorage.setItem("trashContacts", JSON.stringify(trashContacts));
 }
 
 function renderHome() {
   const app = document.getElementById("app");
+
   app.innerHTML = `
  <h1 class="text-3xl font-bold mb-4 flex items-center gap-2">
 
@@ -41,25 +46,27 @@ function renderHome() {
     <input type="text" id="search-input" placeholder="Search contacts..." class="border p-2 rounded w-full mb-4" />
     <div id="contact-list" class="grid gap-4"></div>
   `;
+
   const contacts = getContacts();
+
   displayContacts(contacts);
-  document
-    .getElementById("search-input")
-    .addEventListener("input", function () {
-      const keyword = this.value.toLowerCase();
-      const filtered = contacts.filter(
-        (c) =>
-          c.name.toLowerCase().includes(keyword) ||
-          c.email.toLowerCase().includes(keyword) ||
-          c.phone.toLowerCase().includes(keyword) ||
-          c.location.toLowerCase().includes(keyword)
-      );
-      displayContacts(filtered);
-    });
+
+  document.getElementById("search-input").addEventListener("input", function () {
+    const keyword = this.value.toLowerCase();
+    const filteredContacts = contacts.filter(
+      (c) =>
+        c.name.toLowerCase().includes(keyword) ||
+        c.email.toLowerCase().includes(keyword) ||
+        c.phone.toLowerCase().includes(keyword) ||
+        c.location.toLowerCase().includes(keyword)
+    );
+    displayContacts(filteredContacts);
+  });
 }
 
 function renderAddContact() {
   const app = document.getElementById("app");
+
   app.innerHTML = `
     <h1 class="text-2xl font-bold mb-4">Add New Contact</h1>
     <form id="contact-form" class="space-y-4">
@@ -70,27 +77,30 @@ function renderAddContact() {
       <button type="submit" class="bg-sky-500 text-white p-2 rounded w-full">Save Contact</button>
     </form>
   `;
-  document
-    .getElementById("contact-form")
-    .addEventListener("submit", function (e) {
-      e.preventDefault();
-      const contact = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        location: document.getElementById("location").value,
-      };
-      const contacts = getContacts();
-      contacts.push(contact);
-      saveContacts(contacts);
-      alert("Contact saved successfully!");
-      navigate("#home");
-    });
+
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const contact = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      location: document.getElementById("location").value,
+    };
+    const contacts = getContacts();
+
+    contacts.push(contact);
+    saveContacts(contacts);
+
+    alert("Contact saved successfully!");
+    navigate("#home");
+  });
 }
 
 function renderTrash() {
   const app = document.getElementById("app");
+
   app.innerHTML = `<h1 class="text-3xl font-bold mb-4 text-red-500">Trash</h1><div id="trash-list" class="grid gap-4"></div>`;
+
   displayTrashContacts(getTrashContacts());
 }
 
@@ -101,7 +111,9 @@ function renderContactDetail(index) {
     navigate("#home");
     return;
   }
+
   const app = document.getElementById("app");
+
   app.innerHTML = `
     <div class="max-w-md mx-auto bg-white shadow p-6 rounded">
       <h1 class="text-2xl font-bold mb-4">${contact.name}</h1>
@@ -120,7 +132,9 @@ function renderEditContact(index) {
     navigate("#home");
     return;
   }
+
   const app = document.getElementById("app");
+
   app.innerHTML = `
     <h1 class="text-2xl font-bold mb-4">Edit Contact</h1>
     <form id="edit-form" class="space-y-4">
@@ -131,6 +145,7 @@ function renderEditContact(index) {
       <button type="submit" class="bg-green-500 text-white p-2 rounded w-full">Update Contact</button>
     </form>
   `;
+
   document.getElementById("edit-form").addEventListener("submit", function (e) {
     e.preventDefault();
     contacts[index] = {
@@ -148,10 +163,10 @@ function renderEditContact(index) {
 function displayContacts(contacts) {
   const container = document.getElementById("contact-list");
   container.innerHTML = "";
+
   contacts.forEach((contact, index) => {
     const card = document.createElement("div");
-    card.className =
-      "bg-white shadow p-4 rounded flex justify-between items-center";
+    card.className = "bg-white shadow p-4 rounded flex justify-between items-center";
     card.innerHTML = `
       <div class="flex-1 cursor-pointer" onclick="navigate('#detail-${index}')">
         <p class="font-semibold">${contact.name}</p>
@@ -169,21 +184,25 @@ function displayContacts(contacts) {
 
 function moveToTrash(index) {
   const contacts = getContacts();
-  const removed = contacts.splice(index, 1)[0];
+  const removedContact = contacts.splice(index, 1)[0];
+
   const trashContacts = getTrashContacts();
-  trashContacts.push(removed);
+  trashContacts.push(removedContact);
+
   saveContacts(contacts);
   saveTrashContacts(trashContacts);
+
   renderHome();
 }
-//  Fungsi displayTrashContacts
+
 function displayTrashContacts(trashContacts) {
   const container = document.getElementById("trash-list");
+
   container.innerHTML = "";
+
   trashContacts.forEach((contact, index) => {
     const card = document.createElement("div");
-    card.className =
-      "bg-white shadow p-4 rounded flex justify-between items-center";
+    card.className = "bg-white shadow p-4 rounded flex justify-between items-center";
     card.innerHTML = `
   <div>
     <p class="font-semibold">${contact.name}</p>
@@ -204,24 +223,25 @@ function displayTrashContacts(trashContacts) {
     container.appendChild(card);
   });
 }
-// Fungsi restore kontak
+
 function restoreContact(index) {
   const trashContacts = getTrashContacts();
-  const restored = trashContacts.splice(index, 1)[0];
+  const restoredContact = trashContacts.splice(index, 1)[0];
+
   const contacts = getContacts();
-  contacts.push(restored);
+  contacts.push(restoredContact);
+
   saveTrashContacts(trashContacts);
   saveContacts(contacts);
+
   alert("Contact restored successfully!");
   navigate("#home");
 }
-// Validasi hapus permanent
+
 function deleteForever(index) {
-  if (
-    confirm(
-      "Are you sure you want to permanently delete this contact? This action cannot be undone."
-    )
-  ) {
+  const isSure = confirm("Are you sure you want to permanently delete this contact? This action cannot be undone.");
+
+  if (isSure) {
     const trashContacts = getTrashContacts();
     trashContacts.splice(index, 1);
     saveTrashContacts(trashContacts);
